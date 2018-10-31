@@ -58,6 +58,21 @@ class Tree {
         }
     }
 
+    sort (node) {
+        let leftArr = []
+        let rightArr = []
+        let arr = []
+        node = node || this.root
+        arr.push(node.data)
+        if (node.left) {
+            leftArr = this.sort(node.left).concat(leftArr)
+        }
+        if (node.right) {
+            rightArr = rightArr.concat(this.sort(node.right))
+        }
+        return leftArr.concat(arr).concat(rightArr)
+    }
+
     remove (data) {
         let node = this.find(data)
         if (!node) {
